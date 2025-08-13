@@ -1,0 +1,269 @@
+body {
+  padding: 0;
+  margin: 0;
+  color: #fff;
+  background-color: #333;
+  min-height: 100dvh;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+#root {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-height: 100dvh;
+}
+
+header {
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 10dvh;
+}
+
+
+header > div {
+  display: flex;
+  gap: 1rem;
+}
+
+header button {
+  background-color: #444;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+header button:hover {
+  background-color: #555;
+}
+
+h1 {
+  text-align: center;
+  margin: 20px 0;
+}
+
+main {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding-top: 2rem;
+} 
+  
+main .no-characters  {
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.character-list {
+    max-height: 80dvh;
+    padding: 0 .5rem;
+  overflow-y: scroll;
+}
+
+.character-list .character-cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.character-card {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  border: 1px solid #444;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.character-card:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease-in-out;
+  border-color: green;
+}
+
+.character-card.selected {
+  border-color: blue;
+  background-color: #418039;
+}
+
+.character-card .character-rarity {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: #00000094;
+  padding: 2px 5px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.character-card .character-name {
+  background-color: rgb(14, 14, 14);
+  color: #fff;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.character-list .character-card .character-name {
+  padding: 0 10px;
+  line-height: 1.2em;
+}
+
+.owned-characters-list .character-card .character-name {
+  padding: 0 5px;
+  line-height: 1.6em;
+  font-size: 0.8em;
+}
+
+.character-list .character-card .character-rarity {
+  font-size: 1em;
+}
+
+.owned-characters-list .character-card .character-rarity {
+  font-size: 0.7em;
+}
+
+.character-list > .character-card .character-name {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.character-card img.character-element {
+  right: 5%;
+  width: 5dvw;
+  height: 5dvw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  background-color: #00000094;
+  border-radius: 5px;
+}
+
+.character-card img.character-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 8px 8px 0 0;
+}
+
+.character-list .character-card img.character-element {
+  bottom: 20%;
+  height: 40px;
+  width: 40px;
+}
+
+.owned-characters-list .character-card img.character-element {
+  bottom: 25%;
+  height: 25px;
+  width: 25px;
+}
+/* HOME */
+
+.home-container {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.home-container > .owned-characters-list {
+  grid-column: 2/-1;
+  padding: 1rem;
+  border-right: 1px solid #444;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+  gap: 5px;
+  max-height: 70dvh;
+  border: 2px solid #444;
+  overflow-y: scroll;
+}
+/* BUILDS */
+.builds-container {
+height: 70dvh;  
+overflow-y: scroll;
+border: 2px solid #adadad;
+border-radius: 8px;
+padding: 0 1rem;
+}
+.character-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+    /* margin-bottom: 2rem; */
+}
+
+.character-section h4 {
+    grid-column: 1 / -1;
+    text-align: left;
+    margin-bottom: 1rem;
+}
+
+.character-section .combinations-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.build-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.build-row .character-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* width: 80px; */
+}
+
+.build-row .character-card a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.build-row .character-card img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #e0e0e0;
+}
+
+.build-row .character-name {
+    margin-top: 5px;
+    font-size: 0.8rem;
+    text-align: center;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #fff;
+}
+
+@media screen and (max-width: 600px) {
+  header {
+   font-size: .4rem;
+  }
+
+  header button {
+    font-size: .5rem;
+    padding: 5px 10px;
+  }
+  
+}
