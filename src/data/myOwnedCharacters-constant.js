@@ -1,4 +1,4 @@
-[
+const myOwnedCharacters = [
   "amber",
   "barbara",
   "beidou",
@@ -31,4 +31,6 @@
   "xiangling",
   "xingqiu",
   "xinyan"
-]
+];
+
+export default myOwnedCharacters;

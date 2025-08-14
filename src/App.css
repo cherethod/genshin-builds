@@ -57,6 +57,22 @@ main {
 main .no-characters  {
   text-align: center;
   font-size: 1.5em;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  grid-column: 1 / -1;
+}
+
+main .empty-box {
+  text-align: center;
+  font-size: 1.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  grid-column: 1 / -1;
 }
 
 .character-list {
@@ -175,6 +191,33 @@ main .no-characters  {
   height: 100%;
 }
 
+.home-container > .side-main-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border-right: 1px solid #444;
+}
+
+.home-container > .side-main-menu .menu-button {
+  background-color: transparent;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+  margin-bottom: 1rem;
+}
+
+.home-container > .side-main-menu .menu-button:hover {
+  color: #8df1d0;
+  transform: scale(1.05);
+  text-decoration: underline;
+}
+
+
 .home-container > .owned-characters-list {
   grid-column: 2/-1;
   padding: 1rem;
@@ -254,6 +297,19 @@ padding: 0 1rem;
     overflow: hidden;
     text-overflow: ellipsis;
     color: #fff;
+}
+
+/* IMPORT FILE */
+
+.load-import-file {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 90%;
+  border: 2px dashed #ccc;
+  border-radius: 18px;
+  background-color: red;
 }
 
 @media screen and (max-width: 600px) {

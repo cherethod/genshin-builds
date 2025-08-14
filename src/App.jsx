@@ -4,6 +4,7 @@ import "./App.css";
 import CharacterCard from "./components/CharacterCard";
 import Builds from "./components/Builds";
 import Header from "./components/Header";
+import LoadImportFile from "./components/LoadImportFile";
 
 function App() {
   const [characters, setCharacters] = useState(charactersInfo);
@@ -13,7 +14,7 @@ function App() {
   useEffect(() => {
     // Initialize ownedCharacters from localStorage if available
     const storedOwnedCharacters = localStorage.getItem("ownedCharacters");
-    if (storedOwnedCharacters) {
+    if (storedOwnedCharacters && storedOwnedCharacters.length > 0) {
       setOwnedCharacters(JSON.parse(storedOwnedCharacters));
     }
   }, []);
@@ -23,16 +24,52 @@ function App() {
     localStorage.setItem("ownedCharacters", JSON.stringify(ownedCharacters));
   }, [ownedCharacters]);
 
+  const loadOwnedCharactersFromFile = async () => {
+    setStatus('import-file')
+  }
+
+  function onFileLoad(data) {
+    if (Array.isArray(data)) {
+      setOwnedCharacters(data);
+      setStatus("main");
+    } else {
+      Object.entries(data).forEach(([key, value]) => {
+        const fixedName = key.toLocaleLowerCase().replace(/ /g, "_");
+         if (Object.keys(characters).includes(fixedName)) {
+          console.log(`Character ${fixedName} found in characters list.`);
+          if (!ownedCharacters.includes(fixedName)) {
+            console.log(`Character ${fixedName} not in owned characters, adding...`);
+            setOwnedCharacters((prev) => [...prev, fixedName]);
+          } else {
+            console.log(`Character ${fixedName} already in owned characters, skipping.`);
+          }s
+        }          
+      })
+      if (ownedCharacters.length === 0) {
+        alert("No characters found in the file.");
+      }
+    }
+    setStatus("main");
+  }
+      
+
   return (
     <>
       <Header status={status} setStatus={setStatus} />
       <main className="container">
-        {characters && status === "main" && (
+        {characters && status === "import-file" && (
+          <LoadImportFile onFileLoad={onFileLoad}/>
+        )}
+        {characters && status === "main" && (          
           <div className="home-container">
+            <div className="side-main-menu">
+            <button className="menu-button" onClick={() => loadOwnedCharactersFromFile()}>Import Owned Characters from file</button>
+
+            </div>
             <div className="owned-characters-list">
               {
                 ownedCharacters.length === 0 && (
-                  <h2>No characters selected</h2>
+                  <h2 className="empty-box">No characters selected</h2>
                 )
               }
               {ownedCharacters.length > 0 && Object.entries(characters).map(([id, character]) => {
