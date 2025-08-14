@@ -73,7 +73,8 @@ function App() {
                 )
               }
               {ownedCharacters.length > 0 && Object.entries(characters).map(([id, character]) => {
-                if (ownedCharacters.includes(id)) {
+                const fixedName = character.name.toLowerCase().replace(/ /g, "_");
+                if (ownedCharacters.includes(fixedName)) {
                   return (
                     <CharacterCard
                       key={id}
