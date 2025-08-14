@@ -323,6 +323,10 @@ padding: 0 1rem;
   .owned-characters-list {
     grid-column: 1 / -1 !important;
   }
+
+  .character-card:not(.selected):hover  {
+    background-color: unset;
+  }
 }
 
 @media screen and (max-width: 600px) {
