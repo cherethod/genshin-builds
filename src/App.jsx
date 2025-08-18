@@ -11,7 +11,7 @@ function App() {
   const [characters, setCharacters] = useState(charactersInfo);
   const [ownedCharacters, setOwnedCharacters] = useState([]);
   const [status, setStatus] = useState("main");
-  const [characterCompositions, setCharacterCompositions] = useState({});
+  const [characterCompositions, setCharacterCompositions] = useState([]);
 
   useEffect(() => {
     // Initialize ownedCharacters from localStorage if available
