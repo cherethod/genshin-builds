@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Scrapper = ({setCharacterCompositions}) => {
   const [selectedCorsProxy, setSelectedCorsProxy] = useState(
