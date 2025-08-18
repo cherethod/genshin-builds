@@ -130,7 +130,11 @@ function App() {
           </div>
         )}
         {status === "builds" && ownedCharacters.length >= 4 && (
-          <Builds ownedCharacters={ownedCharacters} />
+          <Builds 
+            ownedCharacters={ownedCharacters}
+            characterCompositions={characterCompositions}
+            setCharacterCompositions={setCharacterCompositions}
+           />
         )}
         {status === "Scrapper" && (
           <div className="scrapper-container">
