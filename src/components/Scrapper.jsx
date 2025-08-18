@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const Scrapper = ({setCharacterCompositions}) => {
+const Scrapper = ({ setCharacterCompositions }) => {
   const [selectedCorsProxy, setSelectedCorsProxy] = useState(
     "https://api.codetabs.com/v1/proxy?quest="
   );
@@ -11,25 +11,65 @@ const Scrapper = ({setCharacterCompositions}) => {
   const [results, setResults] = useState([]);
   const [showedMessage, setShowedMessage] = useState("");
 
-    useEffect(() => {
+  useEffect(() => {
     if (status === "success" || status === "error") {
       const timer = setTimeout(() => setStatus(""), 3000);
-      return () => clearTimeout(timer); 
+      return () => clearTimeout(timer);
     }
   }, [status]);
 
   const normalize = (s) =>
     s
       .trim()
-      .replace(/^Genshin\s*-\s*/i, "") 
+      .replace(/^Genshin\s*-\s*/i, "")
       .toLowerCase()
       .replace(/\s+/g, "_");
+
+  const fixedCombinedNames = [
+    "kazuha",
+    "kokomi",
+    "raiden",
+    "shinobu",
+    "ayato",
+    "ayaka",
+    "itto",
+    "mizuki",
+  ];
+
+  const getCombinedName = (name) => {
+    switch (name) {
+      case "kazuha":
+        return "kaedehara_kazuha";
+      case "kokomi":
+        return "sangonomiya_kokomi";
+      case "raiden":
+        return "raiden_shogun";
+      case "shinobu":
+        return "kuki_shinobu";
+      case "ayato":
+        return "kamisato_ayato";
+      case "ayaka":
+        return "kamisato_ayaka";
+      case "itto":
+        return "arataki_itto";
+      case "mizuki":
+        return "yumemizuki_mizuki";
+      default:
+        return name;
+    }
+  };
 
   const extractNameFromAnchor = (a) => {
     if (!a) return "";
     if (selectedUrl.includes("game8.co")) {
       const txt = a.textContent?.trim() || "";
-      if (txt) return normalize(txt);
+      if (txt) {
+        if (fixedCombinedNames.includes(txt.toLowerCase())) {
+          return getCombinedName(txt.toLowerCase());
+        } else {
+          return normalize(txt);
+        }
+      }
     } else if (selectedUrl.includes("genshin-builds.com")) {
       const spanText = a.querySelector("span")?.textContent?.trim();
       if (spanText) return spanText.toLowerCase().replace(/\s+/g, "_");
@@ -77,6 +117,7 @@ const Scrapper = ({setCharacterCompositions}) => {
         const webTables = [...doc.querySelectorAll("table")].filter(
           isBestTeamsTable
         );
+
         console.log(`Found ${webTables.length} tables matching criteria.`);
         webTables.forEach((table) => {
           // Toma solo filas de cuerpo y salta el header
@@ -118,13 +159,13 @@ const Scrapper = ({setCharacterCompositions}) => {
         });
       }
 
-       setCharacterCompositions((prev) => {
-      const existing = new Set(prev.map((team) => JSON.stringify(team)));
-      const filtered = newCompositions.filter(
-        (team) => !existing.has(JSON.stringify(team))
-      );
-      return [...prev, ...filtered];
-    });
+      setCharacterCompositions((prev) => {
+        const existing = new Set(prev.map((team) => JSON.stringify(team)));
+        const filtered = newCompositions.filter(
+          (team) => !existing.has(JSON.stringify(team))
+        );
+        return [...prev, ...filtered];
+      });
 
       setStatus("");
       console.log("Compositions:", results); // aquí sí verás el resultado final
