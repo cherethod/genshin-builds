@@ -30,7 +30,7 @@ function App() {
     // Initialize characterComposition from localStorage if available
     const storedCharacterCompositions = localStorage.getItem("characterCompositions");
     if (storedCharacterCompositions) {
-      setCharacterPositions(JSON.parse(storedCharacterCompositions));
+      setCharacterCompositions(JSON.parse(storedCharacterCompositions));
     }
   }, []);
 

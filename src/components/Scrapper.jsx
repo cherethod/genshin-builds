@@ -14,14 +14,14 @@ const Scrapper = ({setCharacterCompositions}) => {
     useEffect(() => {
     if (status === "success" || status === "error") {
       const timer = setTimeout(() => setStatus(""), 3000);
-      return () => clearTimeout(timer); // limpia si el componente se desmonta o cambia el status antes
+      return () => clearTimeout(timer); 
     }
   }, [status]);
 
   const normalize = (s) =>
     s
       .trim()
-      .replace(/^Genshin\s*-\s*/i, "") // quita "Genshin - "
+      .replace(/^Genshin\s*-\s*/i, "") 
       .toLowerCase()
       .replace(/\s+/g, "_");
 
@@ -34,10 +34,6 @@ const Scrapper = ({setCharacterCompositions}) => {
       const spanText = a.querySelector("span")?.textContent?.trim();
       if (spanText) return spanText.toLowerCase().replace(/\s+/g, "_");
     }
-
-    // Fallback: usa el alt de la imagen si no hay texto en el enlace
-    //   const alt = a.querySelector("img")?.getAttribute("alt") || "";
-    //   return alt ? normalize(alt) : "";
   };
 
   const isBestTeamsTable = (table) => {
