@@ -233,73 +233,67 @@ main .empty-box {
   overflow-y: scroll;
 }
 /* BUILDS */
+
 .builds-container {
-height: 70dvh;  
-overflow-y: scroll;
-border: 2px solid #adadad;
-border-radius: 8px;
-padding: 0 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
+  gap: 20px;
+  justify-content: center;
+  overflow-y: auto;
+  max-height: 70dvh;
 }
-.character-section {
+
+.builds-container .card {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  background-color: #444;
+  border-radius: 10px;
+  padding: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.builds-container .character {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-    /* margin-bottom: 2rem; */
-}
-
-.character-section h4 {
-    grid-column: 1 / -1;
-    text-align: left;
-    margin-bottom: 1rem;
-}
-
-.character-section .combinations-container {
-  display: flex;
-  flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
+  text-align: center;
+  margin-bottom: 10px;
+  border: 1px solid #fdfdfd;
+  border-radius: 10px;
+  height: 100%;
 }
 
-.build-row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 10px;
+.builds-container .character.owned {
+  background-color: #49bd3a;
+  border-color: #418039;
 }
 
-.build-row .character-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* width: 80px; */
+.builds-container .character img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  border-radius: 10px;
+  margin-bottom: 5px;
 }
 
-.build-row .character-card a {
-    text-decoration: none;
-    color: inherit;
-    cursor: pointer;
-}
-
-.build-row .character-card img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #e0e0e0;
-}
-
-.build-row .character-name {
-    margin-top: 5px;
-    font-size: 0.8rem;
-    text-align: center;
-    max-width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    color: #fff;
+.builds-container .character span {
+  margin-top: 5px;
+  font-size: 2em;
+  text-transform: capitalize;
+  text-wrap: balance;
+  color: #fff;
+  background-color: #222;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 0 10px 10px;
 }
 
 /* IMPORT FILE */
