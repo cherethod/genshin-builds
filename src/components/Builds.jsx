@@ -1,58 +1,65 @@
+import { useState, useEffect } from "react";
+import defaultCharacterCompositions from "../data/defaultCharacterCompositions";
 
-const Builds = ({ ownedCharacters, characterCombinations }) => {
+const Builds = ({ ownedCharacters, characterCompositions, setCharacterCompositions }) => {
     console.log("Owned Characters:", ownedCharacters);
+
+    const [fullCompositions, setFullCompositions] = useState(0);
+
+    useEffect(() => {
+        if (characterCompositions.length === 0) {
+            console.log("No character compositions found, initializing with default.");
+            setCharacterCompositions(defaultCharacterCompositions);
+        }
+
+    }, [characterCompositions]);
+
+    useEffect(() => {
+        const count = characterCompositions.reduce((total, comp) => {
+            return comp.every(character => ownedCharacters.includes(character))
+                ? total + 1
+                : total;
+        }, 0);
+        
+        setFullCompositions(count);
+    }, [ownedCharacters, characterCompositions]); // Dependencias correctas
+
+
+    const normalizeCharacterName = (name) => {
+        return name.toLowerCase().replace(/_/g, " ");
+    }
     
     return (
         <>
-            <h3>Builds</h3>
+            <h3>Builds  (Total completed builds: {fullCompositions})</h3>
         <div className="builds-container">
-            {Object.entries(characterCombinations).map(([mainCharacter, combinations]) => (
-                
-                <div key={mainCharacter} className="character-section">
-                    <h4>{mainCharacter}</h4>
-                    <div className="combinations-container">
-                    {              
-                    
-                    combinations.map((combination, comboIndex) => (
-                        <div key={`${mainCharacter}-${comboIndex}`} className="build-row">
-                            {/* Personaje principal */}
-                            <div className={`character-card ${ownedCharacters.includes(mainCharacter.toLowerCase().replace(/ /g, "_")) ? "selected" : ""}`}>
-                                <img
-                                    src={`https://i2.wp.com/images.genshin-builds.com/genshin/characters/${mainCharacter.toLowerCase().replace(/ /g, "_")}/image.png`}
-                                    alt={mainCharacter}
-                                    title={mainCharacter}
-                                />
-                                {/* <div className="character-name">{mainCharacter}</div> */}
-                            </div>
+            {
+                characterCompositions.map((comp, index) => {
+                    return (
+                        <div className="card" key={index}>
+                         {
                             
-                            {/* Personajes de soporte */}
-                            {combination.characters.map((character, charIndex) => {
-                                const fixedName = character.name
-                                    .replace("Genshin - ", "")
-                                    .toLowerCase()
-                                    .replace(/ /g, "_");
+                            ...comp.map((character, charIndex) => {
+                                console.log(`Rendering character ${charIndex + 1} in composition ${index + 1}:`, character);
+                                const fixedName = character.toLowerCase().replace(/_/g, " ");
                                 
-                                return (
-                                    <div key={`${mainCharacter}-${comboIndex}-${charIndex}`} className={`character-card ${ownedCharacters.includes(fixedName) ? "selected" : ""}`}>
-                                        <a href={character.link} target="_blank" rel="noopener noreferrer">
+                                    return (
+                                        <div className={`character ${ownedCharacters.includes(character) ? 'owned' : ''}`} key={charIndex}>
                                             <img
-                                                src={`https://i2.wp.com/images.genshin-builds.com/genshin/characters/${fixedName}/image.png`}
-                                                alt={character.name.replace("Genshin - ", "")}
-                                                title={character.name.replace("Genshin - ", "")}
+                                                src={`https://i2.wp.com/images.genshin-builds.com/genshin/characters/${character.includes("traveler") ? "traveler" : character.toLowerCase()}/image.png`}
+                                                alt={character}
                                             />
-                                            {/* <div className="character-name">
-                                                {character.name.replace("Genshin - ", "")}
-                                            </div> */}
-                                        </a>
-                                    </div>
-                                );
-                            })}
+                                            <span>{normalizeCharacterName(character)}</span>
+                                        </div>
+                                    );                               
+                            })
+                         }
+
                         </div>
-                    ))}
-                    </div>                  
-                
-                </div>
-            ))}
+                    )
+            })
+        }
+           
         </div>
         </>
     );
