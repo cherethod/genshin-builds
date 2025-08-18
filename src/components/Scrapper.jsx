@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Scrapper = () => {
+const Scrapper = ({setCharacterCompositions}) => {
   const [selectedCorsProxy, setSelectedCorsProxy] = useState(
     "https://api.codetabs.com/v1/proxy?quest="
   );
@@ -10,6 +10,13 @@ const Scrapper = () => {
   const [status, setStatus] = useState("");
   const [results, setResults] = useState([]);
   const [showedMessage, setShowedMessage] = useState("");
+
+    useEffect(() => {
+    if (status === "success" || status === "error") {
+      const timer = setTimeout(() => setStatus(""), 3000);
+      return () => clearTimeout(timer); // limpia si el componente se desmonta o cambia el status antes
+    }
+  }, [status]);
 
   const normalize = (s) =>
     s
@@ -115,7 +122,7 @@ const Scrapper = () => {
         });
       }
 
-       setResults((prev) => {
+       setCharacterCompositions((prev) => {
       const existing = new Set(prev.map((team) => JSON.stringify(team)));
       const filtered = newCompositions.filter(
         (team) => !existing.has(JSON.stringify(team))
@@ -123,7 +130,7 @@ const Scrapper = () => {
       return [...prev, ...filtered];
     });
 
-      setStatus("success");
+      setStatus("");
       console.log("Compositions:", results); // aquí sí verás el resultado final
     } catch (err) {
       console.error("Error fetching data:", err);
