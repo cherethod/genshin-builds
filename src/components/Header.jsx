@@ -10,6 +10,7 @@ const Header = ({ status, setStatus }) => {
         <button onClick={() => setStatus("main")}>Go to Main</button>
         <button onClick={() => setStatus("owned-characters-selection")}>Set owned Characters</button>
         <button onClick={() => setStatus("builds")}>Check builds</button>
+        <button onClick={() => setStatus("Scrapper")}>Scrapper</button>
       </div>
     </header>
   );

@@ -1,6 +1,5 @@
-import characterCombinations from '../data/characterCombinations.json';
 
-const Builds = ({ ownedCharacters }) => {
+const Builds = ({ ownedCharacters, characterCombinations }) => {
     console.log("Owned Characters:", ownedCharacters);
     
     return (

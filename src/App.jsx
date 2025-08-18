@@ -5,11 +5,13 @@ import CharacterCard from "./components/CharacterCard";
 import Builds from "./components/Builds";
 import Header from "./components/Header";
 import LoadImportFile from "./components/LoadImportFile";
+import Scrapper from "./components/Scrapper";
 
 function App() {
   const [characters, setCharacters] = useState(charactersInfo);
   const [ownedCharacters, setOwnedCharacters] = useState([]);
   const [status, setStatus] = useState("main");
+  const [characterCompositions, setCharacterPositions] = useState({});
 
   useEffect(() => {
     // Initialize ownedCharacters from localStorage if available
@@ -23,6 +25,19 @@ function App() {
     // Save ownedCharacters to localStorage whenever it changes
     localStorage.setItem("ownedCharacters", JSON.stringify(ownedCharacters));
   }, [ownedCharacters]);
+
+  useEffect(() => {
+    // Initialize characterComposition from localStorage if available
+    const storedCharacterCompositions = localStorage.getItem("characterCompositions");
+    if (storedCharacterCompositions) {
+      setCharacterPositions(JSON.parse(storedCharacterCompositions));
+    }
+  }, []);
+
+  useEffect(() => {
+    // Save characterCompositions to localStorage whenever it changes
+    localStorage.setItem("characterCompositions", JSON.stringify(characterCompositions));
+  }, [characterCompositions]);
 
   const loadOwnedCharactersFromFile = async () => {
     setStatus('import-file')
@@ -116,6 +131,11 @@ function App() {
         )}
         {status === "builds" && ownedCharacters.length >= 4 && (
           <Builds ownedCharacters={ownedCharacters} />
+        )}
+        {status === "Scrapper" && (
+          <div className="scrapper-container">
+            <Scrapper setCharacterPositions={setCharacterPositions} />
+          </div>
         )}
       </main>
     </>

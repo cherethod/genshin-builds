@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genshin Impact Team Scraper</title>
+   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Genshin Impact Team Scraper</h1>
+            <p class="subtitle">Extrae composiciones de equipo de Game8 con información de personajes y enlaces</p>
+        </header>
+        
+        <div class="input-section">
+            <input type="text" id="url" value="https://game8.co/games/Genshin-Impact/archives/301819" placeholder="Introduce la URL de Game8">
+            <button id="scrapeBtn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                    <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                </svg>
+                Obtener Composiciones
+            </button>
+        </div>
+        
+        <div class="controls">
+            <div class="proxy-select">
+                <label for="proxySelect">Proxy CORS:</label>
+                <select id="proxySelect">
+                    <option value="https://api.codetabs.com/v1/proxy?quest=">Codetabs</option>
+                    <option value="https://corsproxy.io/?">CorsProxy.io</option>
+                    <option value="https://api.allorigins.win/raw?url=">AllOrigins</option>
+                </select>
+            </div>
+            
+            <div class="status">
+                <div class="status-indicator" id="statusIndicator"></div>
+                <span id="statusText">Listo</span>
+            </div>
+        </div>
+        
+        <div id="error" class="error"></div>
+        <div id="loading" class="loading">Cargando datos desde Game8...</div>
+        
+        <div class="results-area">
+            <div class="results-container" id="results">
+                <!-- Results will be populated here -->
+            </div>
+            
+            <div class="json-container">
+                <div class="json-header">
+                    <h3>Salida JSON</h3>
+                    <button class="copy-btn" id="copyJsonBtn">Copiar JSON</button>
+                </div>
+                <div class="json-output" id="jsonOutput"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="success-message" id="successMessage">¡JSON copiado al portapapeles!</div>
+
+<script src="main.js"></script>
+</body>
+</html>
