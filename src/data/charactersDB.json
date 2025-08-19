@@ -4631,6 +4631,34 @@
     },
     "id": "charlotte"
   },
+     "chasca": {
+    "name": "Chasca",
+    "title": "",
+    "vision": "Anemo",
+    "weapon": "Bow",
+    "gender": "Female",
+    "nation": "",
+    "affiliation": "",
+    "rarity": 5,
+    "release": "",
+    "constellation": "",
+    "birthday": "",
+    "description": "",
+    "skillTalents": [
+    ],
+    "passiveTalents": [
+      
+    ],
+    "constellations": [
+     
+    ],
+    "vision_key": "ANEMO",
+    "weapon_type": "BOW",
+    "ascension_materials": {
+     
+    },
+    "id": "chasca"
+  },
   "chevreuse": {
     "name": "Chevreuse",
     "title": "Executor of Justice",
