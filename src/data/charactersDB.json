@@ -10887,6 +10887,34 @@
     },
     "id": "hu-tao"
   },
+   "iffa": {
+    "name": "Iffa",
+    "title": "",
+    "vision": "Anemo",
+    "weapon": "Catalyst",
+    "gender": "Male",
+    "nation": "",
+    "affiliation": "",
+    "rarity": 4,
+    "release": "",
+    "constellation": "",
+    "birthday": "",
+    "description": "",
+    "skillTalents": [
+    ],
+    "passiveTalents": [
+      
+    ],
+    "constellations": [
+     
+    ],
+    "vision_key": "ANEMO",
+    "weapon_type": "CATALYST",
+    "ascension_materials": {
+     
+    },
+    "id": "iffa"
+  },
   "jean": {
     "name": "Jean",
     "title": "Dandelion Knight",
@@ -18295,6 +18323,34 @@
       ]
     },
     "id": "noelle"
+  },
+  "ororon": {
+    "name": "Ororon",
+    "title": "",
+    "vision": "Electro",
+    "weapon": "Bow",
+    "gender": "Male",
+    "nation": "",
+    "affiliation": "",
+    "rarity": 4,
+    "release": "",
+    "constellation": "",
+    "birthday": "",
+    "description": "",
+    "skillTalents": [
+    ],
+    "passiveTalents": [
+      
+    ],
+    "constellations": [
+     
+    ],
+    "vision_key": "ELECTRO",
+    "weapon_type": "BOW",
+    "ascension_materials": {
+     
+    },
+    "id": "ororon"
   },
   "qiqi": {
     "name": "Qiqi",
