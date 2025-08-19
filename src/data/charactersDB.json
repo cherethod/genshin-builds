@@ -10887,8 +10887,8 @@
     },
     "id": "hu-tao"
   },
-   "iffa": {
-    "name": "Iffa",
+   "ifa": {
+    "name": "Ifa",
     "title": "",
     "vision": "Anemo",
     "weapon": "Catalyst",
@@ -10913,7 +10913,7 @@
     "ascension_materials": {
      
     },
-    "id": "iffa"
+    "id": "ifa"
   },
   "jean": {
     "name": "Jean",
