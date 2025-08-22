@@ -1,43 +1,17 @@
 import { useState, useEffect } from "react";
-import charactersInfo from "./data/charactersDB.json";
 import "./App.css";
 import CharacterCard from "./components/CharacterCard";
 import Builds from "./components/Builds";
 import Header from "./components/Header";
 import LoadImportFile from "./components/LoadImportFile";
 import Scrapper from "./components/Scrapper";
+import UseCharacters from "./components/hooks/UseCharacters";
 
 function App() {
-  const [characters, setCharacters] = useState(charactersInfo);
-  const [ownedCharacters, setOwnedCharacters] = useState([]);
+  
   const [status, setStatus] = useState("main");
-  const [characterCompositions, setCharacterCompositions] = useState([]);
+  const { characters, ownedCharacters, setOwnedCharacters, characterCompositions, setCharacterCompositions } = UseCharacters();
 
-  useEffect(() => {
-    // Initialize ownedCharacters from localStorage if available
-    const storedOwnedCharacters = localStorage.getItem("ownedCharacters");
-    if (storedOwnedCharacters && storedOwnedCharacters.length > 0) {
-      setOwnedCharacters(JSON.parse(storedOwnedCharacters));
-    }
-  }, []);
-
-  useEffect(() => {
-    // Save ownedCharacters to localStorage whenever it changes
-    localStorage.setItem("ownedCharacters", JSON.stringify(ownedCharacters));
-  }, [ownedCharacters]);
-
-  useEffect(() => {
-    // Initialize characterComposition from localStorage if available
-    const storedCharacterCompositions = localStorage.getItem("characterCompositions");
-    if (storedCharacterCompositions) {
-      setCharacterCompositions(JSON.parse(storedCharacterCompositions));
-    }
-  }, []);
-
-  useEffect(() => {
-    // Save characterCompositions to localStorage whenever it changes
-    localStorage.setItem("characterCompositions", JSON.stringify(characterCompositions));
-  }, [characterCompositions]);
 
   const loadOwnedCharactersFromFile = async () => {
     setStatus('import-file')
@@ -130,7 +104,6 @@ function App() {
           <Builds 
             ownedCharacters={ownedCharacters}
             characterCompositions={characterCompositions}
-            setCharacterCompositions={setCharacterCompositions}
            />
         )}
         {status === "Scrapper" && (
