@@ -51,13 +51,10 @@ function App() {
       Object.entries(data).forEach(([key, value]) => {
         const fixedName = key.toLocaleLowerCase().replace(/ /g, "_");
          if (Object.keys(characters).includes(fixedName)) {
-          console.log(`Character ${fixedName} found in characters list.`);
           if (!ownedCharacters.includes(fixedName)) {
-            console.log(`Character ${fixedName} not in owned characters, adding...`);
             setOwnedCharacters((prev) => [...prev, fixedName]);
           } else {
-            console.log(`Character ${fixedName} already in owned characters, skipping.`);
-          }s
+          }
         }          
       })
       if (ownedCharacters.length === 0) {
