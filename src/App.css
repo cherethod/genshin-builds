@@ -243,6 +243,25 @@ main .empty-box {
   max-height: 70dvh;
 }
 
+.builds-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.builds-header button {
+  background-color: #444;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.builds-header button:hover {
+  background-color: #555;
+}
+
 .builds-container .card {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
