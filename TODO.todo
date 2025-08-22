@@ -1,0 +1,14 @@
+# HOME:
+    ☐ Add Character pickker card to show characters list popup
+    # Character list:        
+        ☐ Character list as popup
+        ☐ Mode as prop to ide own characters
+        # Filter:
+            ☐  Add filter by vision
+            ☐  Add filter by weapon
+            ☐  Add filter by rarity
+            ☐  Add search by name
+    #  Character card:
+        ☐ Add delete overlay for own characters in home owned list
+        ☐ Add confirmation dialog for delete character
+
