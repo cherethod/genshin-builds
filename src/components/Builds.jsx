@@ -1,18 +1,9 @@
 import { useState, useEffect } from "react";
-import defaultCharacterCompositions from "../data/defaultCharacterCompositions";
+import BuildGroup from "./BuildGroup";
 
-const Builds = ({ ownedCharacters, characterCompositions, setCharacterCompositions }) => {
-    console.log("Owned Characters:", ownedCharacters);
+const Builds = ({ ownedCharacters, characterCompositions }) => {
 
     const [fullCompositions, setFullCompositions] = useState(0);
-
-    useEffect(() => {
-        if (characterCompositions.length === 0) {
-            console.log("No character compositions found, initializing with default.");
-            setCharacterCompositions(defaultCharacterCompositions);
-        }
-
-    }, [characterCompositions]);
 
     useEffect(() => {
         const count = characterCompositions.reduce((total, comp) => {
@@ -25,9 +16,9 @@ const Builds = ({ ownedCharacters, characterCompositions, setCharacterCompositio
     }, [ownedCharacters, characterCompositions]); // Dependencias correctas
 
 
-    const normalizeCharacterName = (name) => {
-        return name.toLowerCase().replace(/_/g, " ");
-    }
+    // const normalizeCharacterName = (name) => {
+    //     return name.toLowerCase().replace(/_/g, " ");
+    // }
     
     return (
         <>
@@ -35,27 +26,9 @@ const Builds = ({ ownedCharacters, characterCompositions, setCharacterCompositio
         <div className="builds-container">
             {
                 characterCompositions.map((comp, index) => {
+                    let count = 0;
                     return (
-                        <div className="card" key={index}>
-                         {
-                            
-                            ...comp.map((character, charIndex) => {
-                                console.log(`Rendering character ${charIndex + 1} in composition ${index + 1}:`, character);
-                                const fixedName = character.toLowerCase().replace(/_/g, " ");
-                                
-                                    return (
-                                        <div className={`character ${ownedCharacters.includes(character) ? 'owned' : ''}`} key={charIndex}>
-                                            <img
-                                                src={`https://i2.wp.com/images.genshin-builds.com/genshin/characters/${character.includes("traveler") ? "traveler" : character.toLowerCase()}/image.png`}
-                                                alt={character}
-                                            />
-                                            <span>{normalizeCharacterName(character)}</span>
-                                        </div>
-                                    );                               
-                            })
-                         }
-
-                        </div>
+                       <BuildGroup comp={comp} index={index} ownedCharacters={ownedCharacters} />
                     )
             })
         }
