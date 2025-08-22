@@ -6,7 +6,7 @@
     ☐ Add Character pickker card to show characters list popup
     # Character list:        
         ☐ Character list as popup
-        ☐ Mode as prop to ide own characters
+        ☐ Mode as prop to hide own characters
         # Filter:
             ☐  Add filter by vision
             ☐  Add filter by weapon
@@ -16,7 +16,7 @@
         ☐ Add delete overlay for own characters in home owned list
         ☐ Add confirmation dialog for delete character
 # BUILDS: 
-    ☐ Add filter to show only full owned builds or all of them
+    ✔ Add filter to show only full owned builds or all of them @done(25-08-22 19:30)
     
     
 # UI:
@@ -25,6 +25,7 @@
         ☐ Improve color scheme
         ☐ Improve typography
         ☐ Improve spacing and alignment
+        ☐ Set colors as CSS variables
     ☐ Add dark mode
     ☐ Improve responsiveness
         ☐ Make layout adapt to different screen sizes
