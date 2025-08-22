@@ -12,3 +12,18 @@
         ☐ Add delete overlay for own characters in home owned list
         ☐ Add confirmation dialog for delete character
 
+# UI:
+    ☐ Improve overall design and layout        
+        ☐ Add background gradients or images
+        ☐ Improve color scheme
+        ☐ Improve typography
+        ☐ Improve spacing and alignment
+    ☐ Add dark mode
+    ☐ Improve responsiveness
+        ☐ Make layout adapt to different screen sizes
+        ☐ Ensure usability on mobile devices
+    ☐ Add animations
+    ☐ Add transitions
+    ☐ Add sound effects
+    ☐ Add loading indicators
+    ☐ Improve accessibility
