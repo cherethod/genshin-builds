@@ -15,10 +15,10 @@ const Header = ({ status, setStatus }) => {
         
         }
         {
-          !status != "builds" && <button onClick={() => setStatus("builds")}>Check Builds</button>
+          status != "builds" && <button onClick={() => setStatus("builds")}>Check Builds</button>
         }
         {
-          !status != "Scrapper" && <button onClick={() => setStatus("Scrapper")}>Scrapper</button>
+          status != "Scrapper" && <button onClick={() => setStatus("Scrapper")}>Scrapper</button>
         }
       </div>
     </header>
