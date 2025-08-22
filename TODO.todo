@@ -1,3 +1,7 @@
+# BACKEND:
+    ✔ Add characters usability to a custom hook @done(25-08-22 18:51)
+    
+
 # HOME:
     ☐ Add Character pickker card to show characters list popup
     # Character list:        
@@ -11,7 +15,10 @@
     #  Character card:
         ☐ Add delete overlay for own characters in home owned list
         ☐ Add confirmation dialog for delete character
-
+# BUILDS: 
+    ☐ Add filter to show only full owned builds or all of them
+    
+    
 # UI:
     ☐ Improve overall design and layout        
         ☐ Add background gradients or images
