@@ -1,8 +1,8 @@
 const BuildGroup = ({ comp, index, ownedCharacters }) => {
-  const count =  comp.filter((character) => ownedCharacters.includes(character)).length;
+  // const count =  comp.filter((character) => ownedCharacters.includes(character)).length;
 
   return (
-    <div className={`card ${count === 4 ? "full-owned" : ""} `} key={`group-${index}`}>
+    <div className={`card`} >
       {...comp.map((character, charIndex) => {       
         const fixedName = character.toLowerCase().replace(/_/g, " ");
 
